@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;400;500;700&display=swap');
+
+
+:root {
+	--fretboard-height: 400;
+	--fretboard-color: #be975b;
+	--number-of-strings: 6;
+	--string-height: 8;
+	--half-string-height: calc(var(--string-height) / 2);
+	--string-top-position: calc(var(--fretboard-height) / var(--number-of-strings) / 2 - var(--half-string-height));
+	--double-fretmark-position-1: calc(var(--fretboard-height) * 0.25);
+	--double-fretmark-position-2: calc(var(--fretboard-height) * 0.75);
+	
+	--text-color: #fff;
+	--background-color: #353535;
+}
+
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: var(--background-color);
+	width: 100%;
+	height: 100vh;
+	font-family: 'Roboto Slab', 'Arial', sans-serif;
+}
+
+.hidden {
+	display: none !important;
+}
+
+.fretboard {
+	display: flex;
+	flex-direction: column;
+	background: var(--fretboard-color);
+	width: 100%;
+	/*min-width: 1500px;*/
+	height: calc(var(--fretboard-height) * 1px);
+	margin-top: 40px;
+}
+
+.string {
+	display: flex;
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.string:before {
+	content: '';
+	width: 100%;
+	height: calc(var(--string-height) * 1px);
+	background: linear-gradient(#eee, #999);
+	box-shadow: 76px 3px 10px #806233;
+	z-index: 1;
+	position: absolute;
+	top: 22px;
+	top: calc(var(--string-top-position) * 1px);
+}
+
+.note-fret {
+	display: flex;
+	flex: 1;
+	border-right: 10px solid;
+	border-image: linear-gradient(to left, #777, #bbb, #777 ) 1 100%;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+.note-fret:first-child {
+	background: #161717;
+	min-width: 76px;
+	border-right: 12px solid;
+	flex-grow: 0;
+	flex-shrink: 0;
+	background: linear-gradient(to left, #bbb, #fff, #bbb ) 1 100%;
+}
+
+.note-fret:before {
+	content: attr(data-content);
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	color: black;
+	z-index: 2;
+	font-size: 21px;
+	font-weight: 400;
+	line-height: 30px;
+	text-align: center;
+	background: yellow;
+	border: 1px solid black;
+	opacity: 0;
+}
+
+.note-fret:hover:before {
+	opacity: 1;
+}
+
+
+.single-fretmark:after, .double-fretmark:before, .double-fretmark:after {
+	content: '';
+	position: absolute;
+	height: 20px;
+	width: 20px;
+	border-radius: 50%;
+	background: #806233;
+}
+
+
+.single-fretmark:after {
+	top: calc(var(--fretboard-height) / 2 * 1px);
+	transform: translate(0, -50%);
+}
+
+.double-fretmark:before {
+	top: calc(var(--double-fretmark-position-1) * 1px);
+	transform: translate(-140%, -50%);
+}
+
+.double-fretmark:after {
+	top: calc(var(--double-fretmark-position-2) * 1px);
+	transform: translate(-140% ,-50%);
+}
+
+
+.settings-content {
+	display: flex;
+	flex-direction: column;
+	padding: 25px 50px;
+	font-size: 25px;
+	color: var(--text-color);
+}
+
+.setting-input {
+	margin-bottom: 25px;
+}
+
+.accidental-selector {
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Guitar</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="settings-content">
+		<div class="instrument-settings">
+			<div class="instrument_selector_block setting-input">
+				<label for="instrument_selector">
+					Selected instrument:&nbsp;
+				</label>
+				<select name="instrument_selector" id="instrument_selector">
+				</select>
+			</div>
+			<div class="accidental-selector setting-input">
+				<label for="accidental-selector">
+					Selected accidental:&nbsp;
+				</label>
+				<select name="accidental-selector" id="accidental-selector">
+					<option value="flats">♭</option>
+					<option value="sharp">#</option>
+				</select>
+			</div>
+			<div class="number-frets-selector setting-input">
+				<label for="number-frets-selector">
+					Number of frets:&nbsp;
+				</label>
+				<input type="range" name="number-frets-selector" id="number-frets-selector" min="3" max="30" value="20" />
+			</div>
+		</div>
+		<div class="app-settings">
+			
+		</div>
+	</div>
+
+	<div class="fretboard">
+	</div>
+	
+	<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
